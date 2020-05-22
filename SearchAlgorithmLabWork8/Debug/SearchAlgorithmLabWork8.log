@@ -1,0 +1,4 @@
+﻿  SearchAlgorithmLabWork8.cpp
+C:\Users\ivan0\source\repos\OxtonI\c_plus_plus_labs\SearchAlgorithmLabWork8\SearchAlgorithmLabWork8.cpp(47,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\ivan0\source\repos\OxtonI\c_plus_plus_labs\SearchAlgorithmLabWork8\SearchAlgorithmLabWork8.cpp(16): warning C4715: Search: значение возвращается не при всех путях выполнения
+  SearchAlgorithmLabWork8.vcxproj -> C:\Users\ivan0\source\repos\OxtonI\c_plus_plus_labs\SearchAlgorithmLabWork8\Debug\SearchAlgorithmLabWork8.exe
