@@ -1,2 +1,0 @@
-C:\Users\ivan0\source\repos\OxtonI\c_plus_plus_labs\BinaryTree\Debug\BinaryTree.exe
-C:\Users\ivan0\source\repos\OxtonI\c_plus_plus_labs\BinaryTree\Debug\BinaryTree.pdb
