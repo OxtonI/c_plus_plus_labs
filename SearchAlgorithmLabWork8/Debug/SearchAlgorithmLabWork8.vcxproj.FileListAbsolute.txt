@@ -1,2 +1,0 @@
-C:\Users\ivan0\source\repos\OxtonI\c_plus_plus_labs\SearchAlgorithmLabWork8\Debug\SearchAlgorithmLabWork8.exe
-C:\Users\ivan0\source\repos\OxtonI\c_plus_plus_labs\SearchAlgorithmLabWork8\Debug\SearchAlgorithmLabWork8.pdb
