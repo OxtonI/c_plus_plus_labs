@@ -1,2 +1,0 @@
-C:\Users\ivan0\source\repos\OxtonI\c_plus_plus_labs\Lab Work 6 Array and Linked Lists\Debug\Lab Work 6 Array and Linked Lists.exe
-C:\Users\ivan0\source\repos\OxtonI\c_plus_plus_labs\Lab Work 6 Array and Linked Lists\Debug\Lab Work 6 Array and Linked Lists.pdb
