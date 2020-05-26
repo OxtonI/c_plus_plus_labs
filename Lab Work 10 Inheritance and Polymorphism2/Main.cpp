@@ -1,18 +1,27 @@
 ﻿#include <iostream>
 #include "Matrix2D.h"
 #include "Matrix3D.h"
-using namespace std;
 
 int main() 
 {
-    Matrix2D matrix2D;
-    Matrix3D matrix3D, matrix3D2;
-    cout << "matrix2D:\n" << matrix2D << endl;
-    cout << "matrix3D:\n" << matrix3D << endl;
-    cout << "matrix3D2:\n" << matrix3D2 << endl;
-    matrix2D *= 5;
-    matrix3D2 += matrix3D;
-    cout << "matrix3D2 + matrix3D:\n" << matrix3D2 << endl;
-    cout << "matrix2D * 5:\n" << matrix2D << endl;
+    Matrix2D matrix2a, matrix2b;
+    Matrix3D matrix3a, matrix3b;
+    std::cout << "matrix2a \n\n"
+              << matrix2a << std::endl;
+    std::cout << "matrix2b \n\n"
+              << matrix2b << std::endl;
+    std::cout << "matrix3a \n\n"
+              << matrix3a << std::endl;
+    std::cout << "matrix3b \n\n"
+              << matrix3b << std::endl;
+
+    matrix3a += matrix3b;
+    matrix2a *= 8;
+
+    std::cout << "matrix3a + matrix3b \n\n"
+              << matrix3a << std::endl;
+    std::cout << "matrix2a * 8 \n\n"
+              << matrix2a << std::endl;
+
     return 0;
 }
