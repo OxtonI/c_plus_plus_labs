@@ -2,10 +2,24 @@
 #include "Matrix2D.h"
 #include "Matrix3D.h"
 
-int main() 
+void fillElements(MatrixBase &iMatrix)
+{
+    int num = 1;
+    for (int i = 0; i < iMatrix.size(); i++)
+        for (int j = 0; j < iMatrix.size(); j++)
+            iMatrix.element(i, j) = num++;
+}
+
+int main()
 {
     Matrix2D matrix2a, matrix2b;
     Matrix3D matrix3a, matrix3b;
+
+    fillElements(matrix2a);
+    fillElements(matrix2b);
+    fillElements(matrix3a);
+    fillElements(matrix3b);
+
     std::cout << "matrix2a \n\n"
               << matrix2a << std::endl;
     std::cout << "matrix2b \n\n"

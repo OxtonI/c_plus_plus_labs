@@ -3,22 +3,24 @@
 #include <iostream>
 #include <stdexcept>
 
-class MatrixBase 
+class MatrixBase
 {
     public:
-    MatrixBase() = delete;
     unsigned int size() const { return m_size; }
-    void operator *= (int iMult);
-    void operator += (MatrixBase &iAdd);
-    virtual int element(unsigned int i, unsigned int j) const = 0;
-    virtual int &element(unsigned int i, unsigned int j) = 0;
-    friend std::ostream &operator<< (std::ostream &out, const MatrixBase &iMatrix);
+    virtual int element(unsigned int i, unsigned int j) const;
+    virtual int &element(unsigned int i, unsigned int j);
+    void operator*=(int iMult);
+    void operator+=(const MatrixBase &iAdd);
+    friend std::ostream &operator<<(std::ostream &out, const MatrixBase &iMatrix);
 
     protected:
-    explicit MatrixBase(unsigned int iSize) : m_size(iSize){}
+    MatrixBase(unsigned int iSize);
+    ~MatrixBase() { delete[] m_array; }
 
     private:
-    const unsigned int m_size;
+    int *m_array;
+    const unsigned int m_size = 0;
+    constexpr int index(unsigned int i, unsigned int j) const { return i * m_size + j; }
 };
 
 #endif
