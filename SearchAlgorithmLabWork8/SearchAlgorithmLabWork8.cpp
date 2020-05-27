@@ -64,7 +64,7 @@ int BinarySearch2(int array[], int value, int left, int right)
 	else BinarySearch2(array, value, left, middle - 1);
 }
 
-void QuickSort(int* array, int first, int last)
+void QuickSort1(int* array, int first, int last)
 {
 	int mid, count;
 	mid = array[(first + last) / 2];
@@ -85,6 +85,33 @@ void QuickSort(int* array, int first, int last)
 	while (first < last);
 	if (first < last) QuickSort(array, first, last);
 	if (first < last) QuickSort(array, first, last);
+}
+
+void QuickSort2(int* array, int first, int last)
+{
+	int mid;
+	while (first < last) {
+		mid = array[(first + last) / 2];
+		while (array[first] < mid)
+			first++;
+		while (mid < array[last])
+			last--;
+		if (first <= last)
+		{
+			int temp = array[first];
+			array[first] = array[last];
+			array[last] = temp;
+			first++;
+			last--;
+		}
+		if (first < last)
+			first = first;
+		else if (first < last)
+		{
+			last = last;
+			first++;
+		}
+	}
 }
 
 
@@ -113,7 +140,9 @@ int main()
 	end = clock();
 	cout << "Время поиска неотсортированного массива бинарным поиском: " << (((double)end - start) / ((double)CLOCKS_PER_SEC)) << endl;
 
-	QuickSort(Array, 0, N - 1);
+	QuickSort1(Array, 0, N - 1);
+
+	QuickSort2(Array, 0, N - 1);
 
 	start = clock();
 	BinarySearch2(Array, 213, 0, N - 1);
