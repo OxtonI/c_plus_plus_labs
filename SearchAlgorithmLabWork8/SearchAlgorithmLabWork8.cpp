@@ -5,7 +5,7 @@ using namespace std;
 
 int Search(int* startArray, int neededValue)
 {
-	const int N = 1000;
+	const int N = 100;
 	for (int i = 0; i < N; i++)
 	{
 		if (startArray[i] == neededValue)
@@ -17,7 +17,7 @@ int Search(int* startArray, int neededValue)
 	cout << "Значение элемента не найдено" << endl;
 }
 
-int BinarySearch1(int value, int* array, int left, int right)
+int BinarySearch1(int* array, int value, int left, int right)
 {
 	bool mark = false;
 	int mid;
@@ -45,7 +45,7 @@ int BinarySearch1(int value, int* array, int left, int right)
 	}
 }
 
-int BinarySearch2(int array[], int value, int left, int right)
+int BinarySearch2(int* array, int value, int left, int right)
 {
 	int middle = (left + right) / 2;
 	if (array[middle] == value)
@@ -83,8 +83,8 @@ void QuickSort1(int* array, int first, int last)
 	}
 
 	while (first < last);
-	if (first < last) QuickSort(array, first, last);
-	if (first < last) QuickSort(array, first, last);
+	if (first < last) QuickSort1(array, first, last);
+	if (first < last) QuickSort1(array, first, last);
 }
 
 void QuickSort2(int* array, int first, int last)
@@ -118,10 +118,10 @@ void QuickSort2(int* array, int first, int last)
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	const int N = 1000;
+	const int N = 100;
 	int Array[N];
-	const int minValue = -1000;
-	const int maxValue = 1000;
+	const int minValue = -10;
+	const int maxValue = 10;
 	srand(time(NULL));
 	for (int i = 0; i < N; i++)
 	{
@@ -131,12 +131,12 @@ int main()
 
 	clock_t start, end;
 	start = clock();
-	Search(Array, 666);
+	Search(Array, 6);
 	end = clock();
 	cout << "Время поиска неотсортированного массива линейным поиском: " << (((double)end - start) / ((double)CLOCKS_PER_SEC)) << endl;
 
 	start = clock();
-	BinarySearch1(666, Array, 0, N - 1);
+	BinarySearch1(Array, 6, 0, N - 1);
 	end = clock();
 	cout << "Время поиска неотсортированного массива бинарным поиском: " << (((double)end - start) / ((double)CLOCKS_PER_SEC)) << endl;
 
@@ -145,12 +145,12 @@ int main()
 	QuickSort2(Array, 0, N - 1);
 
 	start = clock();
-	BinarySearch2(Array, 213, 0, N - 1);
+	BinarySearch2(Array, 2, 0, N - 1);
 	end = clock();
 	cout << "Время поиска отсортированного массива бинарным поиском: " << (((double)end - start) / ((double)CLOCKS_PER_SEC)) << endl;
 
 	start = clock();
-	Search(Array, 666);
+	Search(Array, 6);
 	end = clock();
 	cout << "Время поиска отсортированного массива линейным поиском: " << (((double)end - start) / ((double)CLOCKS_PER_SEC)) << endl;
 }
