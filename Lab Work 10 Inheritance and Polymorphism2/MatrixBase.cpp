@@ -9,7 +9,7 @@ void MatrixBase::operator*=(int iMult)
             element(x, y) *= iMult;
 }
 
-void MatrixBase::operator+=(MatrixBase& iAdd) 
+void MatrixBase::operator+=(MatrixBase &iAdd) 
 {
     assert(iAdd.size() == m_size);
     for (int x = 0; x < iAdd.m_size; ++x) 

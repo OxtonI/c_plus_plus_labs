@@ -5,7 +5,7 @@
 class Matrix3D : public MatrixBase  
 {
     public:
-    Matrix3D();
+    Matrix3D() : MatrixBase(dimension) { }
     int element(unsigned int i, unsigned int j) const override;
     int &element(unsigned int i, unsigned int j) override;
 
