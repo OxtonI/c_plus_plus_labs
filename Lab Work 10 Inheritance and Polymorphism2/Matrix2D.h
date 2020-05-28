@@ -2,9 +2,16 @@
 #define ABSTRACT_MATRIX_MATRIX2D_H
 #include "MatrixBase.h"
 
-struct Matrix2D : public MatrixBase
+class Matrix2D : public MatrixBase  
 {
-    Matrix2D() : MatrixBase(2) {}
+    public:
+    Matrix2D();
+    int element(unsigned int i, unsigned int j) const override;
+    int &element(unsigned int i, unsigned int j) override;
+
+    private:
+    static constexpr int dimension = 2;
+    int state[dimension][dimension];
 };
 
 #endif
