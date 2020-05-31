@@ -35,11 +35,15 @@ int BinarySearch1(const int* array, int value, int left, int right)
 			left = middle + 1;
 	}
 	if (search == -1)
+	{
 		cout << "Значение элемента " << value << " НЕ найдено" << endl;
+		return search;
+	}
 	else
+	{
 		cout << "Значение элемента " << search << " есть в массиве" << endl;
-
-	return search;
+		return search - 1;
+	}
 }
 
 int BinarySearch2(int* array, int value, int left, int right)
@@ -47,9 +51,8 @@ int BinarySearch2(int* array, int value, int left, int right)
 	int middle = (left + right) / 2;
 	if (array[middle] == value)
 	{
-		value = array[middle];
 		cout << "Значение элемента " << value << " есть в массиве" << endl;
-		return value;
+		return middle;
 	}
 
 	if (middle == left || middle == right)
@@ -94,64 +97,33 @@ void Swap(int* a, int* b)
 	*b = temp;
 }
 
-void QuickSort2(int* array, int size)
+void QuickSort2(int* array, int first, int last)
 {
-	const int MAXSTACK = 1024;
-	int x, y, lb, ub, lbstack[MAXSTACK], ubstack[MAXSTACK], stackpos = 1, ppos, pivot;
-	lbstack[1] = 0;
-	ubstack[1] = size - 1;
-
-	do
-	{
-		lb = lbstack[stackpos];
-		ub = ubstack[stackpos];
-		stackpos--;
-		do
+	int pivot;
+	int left = first;
+	int right = last;
+	while (left < right) {
+		pivot = array[(left + right) / 2];
+		while (array[left] < pivot)
+			left++;
+		while (pivot < array[right])
+			right--;
+		if (left <= right)
 		{
-			ppos = (lb + ub) >> 1;
-			x = lb;
-			y = ub;
-			pivot = array[ppos];
-			do
-			{
-				while (array[x] < pivot)
-					x++;
-				while (pivot < array[y])
-					y--;
-
-				if (x <= y)
-				{
-					Swap(&array[x], &array[y]);
-					x++;
-					y--;
-				}
-			} 
-			while (x <= y);
-
-			if (x < ppos)
-			{
-				if (x < ub)
-				{
-					stackpos++;
-					lbstack[stackpos] = x;
-					ubstack[stackpos] = ub;
-				}
-				ub = y;
-			}
-			else
-			{
-				if (y > lb)
-				{
-					stackpos++;
-					lbstack[stackpos] = lb;
-					ubstack[stackpos] = y;
-				}
-				lb = x;
-			}
-		} 
-		while (lb < ub);
-	} 
-	while (stackpos != 0);
+			int temp = array[left];
+			array[left] = array[right];
+			array[right] = temp;
+			left++;
+			right--;
+		}
+		if (first < right)
+			left = first;
+		else if (left < last)
+		{
+			right = last;
+			first++;
+		}
+	}
 }
 
 void PrintElements(int* array, int num)
@@ -196,7 +168,7 @@ int main()
 	int testQuickSort2[100];
 	RandomArrayFill(testQuickSort2, 100, -10, 10);
 	PrintElements(testQuickSort2, 50);
-	QuickSort2(testQuickSort2, 100);
+	QuickSort2(testQuickSort2, 0, 99);
 	PrintElements(testQuickSort2, 50);
 
 	int testBinarySearch[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -208,12 +180,12 @@ int main()
 	cout << "Время поиска неотсортированного массива линейным поиском: " << (((double)end - start) / ((double)CLOCKS_PER_SEC)) << endl << endl;
 
 	start = clock();
-	cout << "Результат бинарного поиска: " << BinarySearch1(testBinarySearch, 8, 0, sizeof(testBinarySearch) / sizeof(testBinarySearch[0])) << endl;
+	cout << "Индекс этого элемента: " << BinarySearch1(testBinarySearch, 8, 0, sizeof(testBinarySearch) / sizeof(testBinarySearch[0])) << endl;
 	end = clock();
 	cout << "Время поиска неотсортированного массива бинарным поиском: " << (((double)end - start) / ((double)CLOCKS_PER_SEC)) << endl << endl;
 
 	start = clock();
-	cout << "Результат рекурсивного бинарного поиска: " << BinarySearch2(testBinarySearch, 8, 0, sizeof(testBinarySearch) / sizeof(testBinarySearch[0])) << endl;
+	cout << "Индекс этого элемента: " << BinarySearch2(testBinarySearch, 8, 0, sizeof(testBinarySearch) / sizeof(testBinarySearch[0])) << endl;
 	end = clock();
 	cout << "Время поиска отсортированного массива бинарным поиском: " << (((double)end - start) / ((double)CLOCKS_PER_SEC)) << endl << endl;
 
