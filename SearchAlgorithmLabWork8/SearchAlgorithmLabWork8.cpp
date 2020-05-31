@@ -125,7 +125,8 @@ void QuickSort2(int* array, int size)
 					x++;
 					y--;
 				}
-			} while (x <= y);
+			} 
+			while (x <= y);
 
 			if (x < ppos)
 			{
@@ -147,8 +148,10 @@ void QuickSort2(int* array, int size)
 				}
 				lb = x;
 			}
-		} while (lb < ub);
-	} while (stackpos != 0);
+		} 
+		while (lb < ub);
+	} 
+	while (stackpos != 0);
 }
 
 void PrintElements(int* array, int num)
