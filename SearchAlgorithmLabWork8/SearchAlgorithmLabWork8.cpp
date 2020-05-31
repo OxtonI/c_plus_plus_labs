@@ -90,13 +90,6 @@ void QuickSort1(int* array, int first, int last)
 		QuickSort1(array, x, last);
 }
 
-void Swap(int* a, int* b)
-{
-	int temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
 void QuickSort2(int* array, int first, int last)
 {
 	int pivot;
